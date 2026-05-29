@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 header('Content-Type: application/json; charset=utf-8');
 
 // Importa a conexão com o PostgreSQL
-require_once __DIR__ . '/../config/conexao_postgres.php';
+require_once __DIR__ . '/config/conexao_postgres.php';
 
 // Simula o recebimento de dados via POST (ou pega do formulário real)
 // Para testar direto no navegador, se não houver dados via POST, usamos dados de teste
