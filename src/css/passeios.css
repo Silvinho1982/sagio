@@ -1,0 +1,445 @@
+/* ==========================================================================
+   CSS CATALOGO DE PASSEIOS - SAGIO TURISMO
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --primary: #0f1a30;
+    --accent: #c29d2c;
+    --bg-light: #f8fafc;
+    --text-dark: #334155;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO (NAVBAR)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex; /* Alinha os itens na horizontal */
+    align-items: center; /* Centraliza verticalmente a logo e o texto */
+    gap: 15px; /* Define um espaçamento entre a logo e o texto */
+}
+
+/* Ajustes na imagem da logo se necessário */
+.logo-container img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto; /* Mantém a proporção */
+}
+
+/* Localize e substitua o bloco .logo que você já tinha */
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte */
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin: 0; /* Remove margens que podem quebrar o alinhamento */
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--primary);
+}
+
+.logo-text span {
+    color: var(--accent);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    font-family: 'Montserrat', sans-serif; /* Força a fonte correta na navbar */
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none; /* Remove o sublinhado indesejado */
+    color: var(--text-dark); /* Garante a cor padrão do link (ajuste a variável se necessário) */
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover, 
+.nav-menu a.active {
+    color: var(--accent);
+    text-decoration: none; /* Garante que não apareça sublinhado nem no hover */
+}
+
+/* HEADER */
+.passeios-header {
+    background: linear-gradient(rgba(15, 26, 48, 0.8), rgba(15, 26, 48, 0.95)), 
+                url('../images/delta_parnaiba_02.jpg') no-repeat center center/cover;
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.passeios-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px; 
+text-transform: uppercase;
+}
+
+.passeios-header p {
+    font-size: 1rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* LAYOUT CATALOGO */
+.cat-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.cat-section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 25px; 
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+/* AJUSTE DOS CARDS PARA SUPORTAR IMAGENS */
+.cat-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden; /* Garante que a imagem respeite o arredondamento do card */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+/* Área da Imagem do Card */
+.cat-card-img {
+    height: 200px; /* Altura ideal e padronizada para as fotos */
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #cbd5e1; /* Cor de fundo cinza caso a imagem falhe ou demore a carregar */
+}
+
+/* Container do texto interno do card */
+.cat-card-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cat-card h3 {
+    font-size: 1.05rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.cat-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    font-weight: 400;
+}
+
+/* Ajuste específico para o card de Transfer (Largo) */
+.wide-card {
+    grid-column: 1 / -1;
+}
+.wide-card .cat-card-img {
+    height: 280px; /* Imagem um pouco mais imponente para o transfer */
+}
+
+.btn-cat { 
+    display: block; 
+    text-align: center;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 600; 
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn-cat:hover {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+/* DESTAQUES VISUAIS */
+.card-destaque {
+    border-left: 4px solid var(--accent);
+    background-color: #fffdf5;
+}
+
+.card-noturno {
+    border-left: 4px solid #6366f1;
+}
+
+.wide-card {
+    grid-column: 1 / -1;
+}
+
+/* Customização Avançada do Bloco de Informações */
+.info-importante-box {
+    background-color: #fffdf5; /* Tom sutil de alerta */
+    border: 1px solid #fef08a;
+    border-radius: 8px;
+    padding: 35px;
+    margin-top: 50px;
+}
+
+.info-bloco {
+    margin-top: 20px;
+}
+
+.info-bloco h4 {
+    color: #0f1a30;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.info-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-list li {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.info-list li::before {
+    content: "•";
+    color: #c29d2c;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+/* Destaque para as restrições críticas */
+.info-bloco:first-of-type li::before {
+    color: #ef4444; /* Vermelho para a restrição de bebidas/pets */
+}
+
+/* Estilização diferenciada da lista de prazos */
+.list-prazos li strong {
+    color: #0f1a30;
+}
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .cat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-menu {
+        display: none;
+    } /* Opcional: Simplificação para mobile */
+}
+
+.footer-premium {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #070e1a;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-premium a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+.footer-premium a:hover {
+    color: #ffffff;
+}
+
+.copyright-premium {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.footer-premium {
+    width: 100%;
+    padding: 30px 0;
+    background-color: #0f1a30; /* Mantém o fundo escuro padrão da página premium */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #ffffff; /* Texto branco para contrastar com o fundo escuro */
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.copyright .footer-link-item {
+    color: #c29d2c; /* Cor dourada para o link de política */
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-decoration 0.3s;
+}
+
+.copyright .footer-link-item:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO FIXA E CORRETA DO BANNER DE PRIVACIDADE (LGPD)
+   ========================================================================== */
+.lgpd-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0f1a30 !important; /* Força o fundo escuro premium */
+    color: #ffffff !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 99999; /* Garante que ele fique acima de qualquer elemento ou footer */
+    padding: 20px 5%;
+    box-sizing: border-box;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    display: block; /* Garante a exibição do bloco */
+}
+
+/* Quando estiver oculto */
+.lgpd-banner.hidden {
+    transform: translateY(100%) !important;
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.lgpd-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.lgpd-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    margin: 0;
+    color: #cbd5e1 !important;
+    flex: 1;
+    min-width: 280px;
+    text-align: left;
+}
+
+.lgpd-content a {
+    color: #c29d2c !important; /* Tom dourado da Sagio */
+    text-decoration: underline !important;
+    font-weight: 600;
+}
+
+.lgpd-content a:hover {
+    color: #ffffff !important;
+}
+
+.btn-lgpd {
+    background-color: #c29d2c !important;
+    color: #0f1a30 !important;
+    border: none !important;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.btn-lgpd:hover {
+    background-color: #e5b834 !important;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .lgpd-content {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 15px;
+    }
+    .lgpd-content p {
+        text-align: center;
+    }
+    .btn-lgpd {
+        width: 100%;
+    }
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="../src/images/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/x-icon" href="../src/images/logo_sagio.png">
+
+    <title>Sagio Premium | Aluguel de Lanchas Exclusivas no Delta</title>
+
+    <link rel="icon" type="image/png" href="../src/images/favicon-96x96.png" sizes="96x96" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/premium.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="../src/images/logo_Sagio2.png" alt="Sagio Premium" class="navbar-logo">
+            <div class="logo-text">SAGIO<span>PREMIUM</span></div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="passeios.html">Passeios</a></li>
+            <li><a href="#" class="active">Embarcações Premium</a></li>
+            <li><a href="#secao-formulario">Contato</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-selo">Exclusividade no Delta do Parnaíba</div>
+            <h1>Sua Jornada Particular pelo Paraíso</h1>
+            <p>Navegue com total privacidade, conforto e sofisticação a bordo da nossa frota de alto padrão. Desconecte-se do mundo e viva o Delta em um roteiro sob medida.</p>
+            <a href="#secao-formulario" class="btn-vip">Falar com um Consultor VIP</a>
+        </div>
+    </header>
+
+    <section class="diferenciais">
+        <h2>Por que escolher a Sagio Premium?</h2>
+        <div class="grid-diferenciais">
+            <div class="card-diferencial">
+                <div class="icon-dourado">⚓</div>
+                <h3>Píer Particular</h3>
+                <p>Evite filas e aglomerações. Seu embarque e desembarque acontecem em nossa estrutura totalmente privativa.</p>
+            </div>
+            <div class="card-diferencial">
+                <div class="icon-dourado">🧑‍✈️</div>
+                <h3>Tripulação Exclusiva</h3>
+                <p>Navegue com tranquilidade. Nossos marinheiros são profissionais experientes, discretos e altamente qualificados.</p>
+            </div>
+            <div class="card-diferencial">
+                <div class="icon-dourado">🗺️</div>
+                <h3>Roteiros Flexíveis</h3>
+                <p>O ritmo da viagem é seu. Você decide o tempo de parada nas ilhas e dunas, sem pressa e com total liberdade.</p>
+            </div>
+            <div class="card-diferencial">
+                <div class="icon-dourado">🎵</div>
+                <h3>Conforto de Bordo</h3>
+                <p>Embarcações modernas equipadas com sistemas de som premium e estofamento em couro náutico.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao-frota">
+        <h2>Nossa Frota Exclusiva</h2>
+        <div class="grid-frota">
+            <div class="card-lancha">
+                <div class="lancha-img" style="background-image: url('../src/images/mestra_240.png');"></div>
+                <div class="lancha-corpo">
+                    <div class="lancha-tag">Sofisticação e Espaço</div>
+                    <h3>Lancha Mestra 240</h3>
+                    <p>A combinação perfeita entre imponência e conforto náutico. Ideal para grandes famílias ou grupos de amigos que buscam luxo.</p>
+                    <ul class="ficha-tecnica">
+                        <li><strong>Capacidade:</strong> Até 10 passageiros</li>
+                        <li>Banheiro privativo e pia de bordo</li>
+                        <li>Som premium com Bluetooth</li>
+                        <li>Capota estendida para proteção solar</li>
+                    </ul>
+                    <a href="#secao-formulario" class="btn-reserva-lancha" onclick="selecionarEmbarcacao('Mestra 240')">Reservar esta Embarcação</a>
+                </div>
+            </div>
+
+            <div class="card-lancha">
+                <div class="lancha-img" style="background-image: url('../src/images/phoenix230.png');"></div>
+                <div class="lancha-corpo">
+                    <div class="lancha-tag">Design e Agilidade</div>
+                    <h3>Lancha Phoenix 230</h3>
+                    <p>Com linhas esportivas e presença marcante, entrega navegação suave e ágil. Perfeita para explorar os canais mais exclusivos.</p>
+                    <ul class="ficha-tecnica">
+                        <li><strong>Capacidade:</strong> Até 9 passageiros</li>
+                        <li>Excelente espaço interno</li>
+                        <li>Escada de popa (perfeita para banho)</li>
+                        <li>Geleira integrada para bebidas</li>
+                    </ul>
+                    <a href="#secao-formulario" class="btn-reserva-lancha" onclick="selecionarEmbarcacao('Phoenix 230')">Reservar esta Embarcação</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="servicos-opcionais">
+        <h2>Personalize sua Experiência</h2>
+        <p class="subtitle">Adicione serviços exclusivos de concierge ao seu roteiro antes do embarque.</p>
+        <div class="grid-servicos">
+            <div class="card-servico">
+                <h3>🥂 Welcome Drink</h3>
+                <p>Celebre o momento com uma garrafa de espumante ou bebidas finas selecionadas aguardando o seu grupo a bordo.</p>
+            </div>
+            <div class="card-servico">
+                <h3>🧀 Catering Personalizado</h3>
+                <p>Desfrute de tábuas de frios finos, castanhas e frutas tropicais frescas prontas para o consumo durante o passeio.</p>
+            </div>
+            <div class="card-servico">
+                <h3>🌅 Revoada dos Guarás VIP</h3>
+                <p>Um posicionamento estratégico e isolado no rio para assistir ao maior espetáculo da natureza com total privacidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao-formulario" id="secao-formulario">
+        <div class="container-form">
+            <h2>Solicitar Orçamento Personalizado</h2>
+            <p>Preencha os campos abaixo. Nossa equipe de concierge VIP entrará em contato em instantes.</p>
+
+            <form class="form-premium" id="premiumContactForm">
+                <div class="form-group">
+                    <label for="premiumNome">Nome Completo</label>
+                    <input type="text" id="premiumNome" class="form-control" placeholder="Ex: Silvio Rangel" required>
+                </div>
+                <div class="form-group">
+                    <label for="premiumWhatsapp">WhatsApp de Contato</label>
+                    <input type="tel" id="premiumWhatsapp" class="form-control" placeholder="Ex: (86) 99999-9999" required>
+                </div>
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="premiumData">Data Pretendida</label>
+                        <input type="date" id="premiumData" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="premiumPassageiros">Nº de Passageiros</label>
+                        <input type="number" id="premiumPassageiros" class="form-control" min="1" max="10" placeholder="Ex: 5" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="premiumEmbarcacao">Qual embarcação prefere?</label>
+                    <select id="premiumEmbarcacao" class="form-control" required>
+                        <option value="" disabled selected>Escolha uma opção...</option>
+                        <option value="Lancha Mestra 240">Lancha Mestra 240 (Até 10 pessoas)</option>
+                        <option value="Lancha Phoenix 230">Lancha Phoenix 230 (Até 9 pessoas)</option>
+                        <option value="Preciso de ajuda para escolher">Quero ajuda para escolher</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Solicitar Roteiro Exclusivo</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer-premium">
+        <div class="footer-container">
+            <div class="copyright">
+                © 2026 SAGIO TURISMO. Todos os direitos reservados. Desenhado do zero para alta performance. | <a href="politica-cancelamento.html" class="footer-link-item">Política de Cancelamento</a> | SR Dev - Desenvolvimento de Sistemas
+            </div>
+        </div>
+    </footer>
+
+    <div id="lgpd-banner" class="lgpd-banner hidden">
+        <div class="lgpd-content">
+            <p>
+                Nós utilizamos cookies e coletamos dados para aprimorar sua experiência de navegação e processar suas solicitações de reserva em conformidade com a <strong>LGPD</strong>. Ao continuar, você concorda com a nossa 
+                <a href="politica-cancelamento.html">Política de Privacidade e Cancelamento</a>.
+            </p>
+            <button id="btn-lgpd-accept" class="btn-lgpd">Aceitar e Continuar</button>
+        </div>
+    </div>
+
+    <script src="../src/js/script.js"></script>
+    <script src="../src/js/lgpd.js"></script>
+
+</body>
+</html>

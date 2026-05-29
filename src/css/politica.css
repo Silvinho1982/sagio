@@ -1,0 +1,263 @@
+/* ==========================================================================
+   CSS EXCLUSIVO PARA PÁGINA DE POLÍTICA DE CANCELAMENTO
+   ========================================================================== */
+
+.politica-content {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.politica-content h1 {
+    color: #0f1a30;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.politica-content h2 {
+    color: #0f1a30;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 4px solid #c29d2c;
+    padding-left: 10px;
+}
+
+.politica-content p, 
+.politica-content li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 15px;
+}
+
+.politica-content ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-voltar {
+    display: inline-block;
+    margin-top: 20px;
+    color: #c29d2c;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.btn-voltar:hover {
+    text-decoration: underline;
+    color: #0f1a30;
+}
+
+/* Customização Avançada do Bloco de Informações */
+.info-importante-box {
+    background-color: #fffdf5; /* Tom sutil de alerta */
+    border: 1px solid #fef08a;
+    border-radius: 8px;
+    padding: 35px;
+    margin-top: 50px;
+}
+
+.info-bloco {
+    margin-top: 20px;
+}
+
+.info-bloco h4 {
+    color: #0f1a30;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.info-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-list li {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.info-list li::before {
+    content: "•";
+    color: #c29d2c;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+/* Destaque para as restrições críticas */
+.info-bloco:first-of-type li::before {
+    color: #ef4444; /* Vermelho para a restrição de bebidas/pets */
+}
+
+/* Estilização diferenciada da lista de prazos */
+.list-prazos li strong {
+    color: #0f1a30;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .politica-content {
+        padding: 20px;
+        margin: 20px 15px;
+    }
+    .politica-content h1 {
+        font-size: 1.6rem;
+    }
+}
+
+
+.footer-premium {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #070e1a;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-premium a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+.footer-premium a:hover {
+    color: #ffffff;
+}
+
+.copyright-premium {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.footer-premium {
+    width: 100%;
+    padding: 30px 0;
+    background-color: #0f1a30; /* Mantém o fundo escuro padrão da página premium */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #ffffff; /* Texto branco para contrastar com o fundo escuro */
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.copyright .footer-link-item {
+    color: #c29d2c; /* Cor dourada para o link de política */
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-decoration 0.3s;
+}
+
+.copyright .footer-link-item:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   BANNER DE PRIVACIDADE (LGPD)
+   ========================================================================== */
+.lgpd-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0f1a30; /* Fundo escuro premium */
+    color: #ffffff;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999; /* Garante que fique acima de tudo */
+    padding: 15px 5%;
+    box-sizing: border-box;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Classe utilitária para esconder o banner com suavidade */
+.lgpd-banner.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lgpd-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Garante comportamento responsivo em celulares */
+}
+
+.lgpd-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    color: #cbd5e1;
+    flex: 1;
+    min-width: 280px;
+}
+
+.lgpd-content a {
+    color: #c29d2c; /* Cor dourada do seu site */
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.lgpd-content a:hover {
+    color: #ffffff;
+}
+
+.btn-lgpd {
+    background-color: #c29d2c;
+    color: #0f1a30;
+    border: none;
+    padding: 10px 22px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, transform 0.1s;
+    white-space: nowrap;
+}
+
+.btn-lgpd:hover {
+    background-color: #e5b834;
+}
+
+.btn-lgpd:active {
+    transform: scale(0.98);
+}
+
+/* Ajuste responsivo para telas pequenas */
+@media (max-width: 768px) {
+    .lgpd-content {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 12px;
+    }
+    .btn-lgpd {
+        width: 100%;
+    }
+}
+

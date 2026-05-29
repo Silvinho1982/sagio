@@ -1,0 +1,306 @@
+/* ==========================================================================
+   RESET & VARIÁVEIS PREMIUM (VISUAL ESCURO)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --bg-dark: #0b1325;       /* Azul Marinho Bem Profundo */
+    --bg-card: #111c35;       /* Azul um pouco mais claro para contraste */
+    --accent: #d4af37;        /* Dourado Premium */
+    --text-white: #ffffff;
+    --text-muted: #94a3b8;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ==========================================================================
+   NAVBAR (TRANSPARENTE/ESCURA)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: rgba(11, 19, 37, 0.95);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex; /* Alinha os itens na horizontal */
+    align-items: center; /* Centraliza verticalmente a logo e o texto */
+    gap: 15px; /* Define um espaçamento entre a logo e o texto */
+}
+
+/* Ajustes na imagem da logo se necessário */
+.logo-container img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto; /* Mantém a proporção */
+}
+
+/* Localize e substitua o bloco .logo que você já tinha */
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte */
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin: 0; /* Remove margens que podem quebrar o alinhamento */
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.logo-text { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; color: var(--primary); }
+.logo-text span { color: var(--accent); }
+
+.nav-menu { display: flex; list-style: none; gap: 30px; }
+.nav-menu a { font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+.nav-menu a:hover, .nav-menu a.active { color: var(--accent); }
+
+/* ==========================================================================
+   HERO PREMIUM
+   ========================================================================== */
+.hero {
+    position: relative;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    background: linear-gradient(rgba(11, 19, 37, 0.5), rgba(11, 19, 37, 0.9)), 
+                url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+}
+
+.hero-content { max-width: 800px; }
+.hero-selo { font-size: 0.8rem; font-weight: 600; letter-spacing: 4px; color: var(--accent); margin-bottom: 15px; text-transform: uppercase; }
+.hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; }
+.hero p { font-size: 1.1rem; font-weight: 300; color: #cbd5e1; margin-bottom: 35px; line-height: 1.6; }
+.btn-vip { display: inline-block; background-color: var(--accent); color: var(--bg-dark); padding: 15px 35px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; transition: all 0.3s ease; }
+.btn-vip:hover { background-color: #f3cf65; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+
+/* ==========================================================================
+   DIFERENCIAIS
+   ========================================================================== */
+.diferenciais { padding: 80px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+.diferenciais h2 { font-size: 1.8rem; margin-bottom: 50px; text-transform: uppercase; }
+.grid-diferenciais { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+.card-diferencial { background-color: var(--bg-card); padding: 35px 25px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.05); transition: transform 0.3s; }
+.card-diferencial:hover { transform: translateY(-5px); border-color: var(--accent); }
+.icon-dourado { font-size: 2.2rem; color: var(--accent); margin-bottom: 15px; }
+.card-diferencial h3 { font-size: 1.15rem; margin-bottom: 10px; }
+.card-diferencial p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+/* ==========================================================================
+   SEÇÃO FROTA (CORRIGIDA COM GRID EQUILIBRADO)
+   ========================================================================== */
+.secao-frota { padding: 80px 5%; max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+.secao-frota h2 { text-align: center; font-size: 1.8rem; margin-bottom: 50px; text-transform: uppercase; }
+.grid-frota { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; }
+
+.card-lancha { background-color: var(--bg-card); border-radius: 8px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.1); display: flex; flex-direction: column; box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+.lancha-img { height: 280px; background-size: cover; background-position: center; transition: transform 0.5s; }
+.card-lancha:hover .lancha-img { transform: scale(1.02); }
+.lancha-corpo { padding: 35px; flex-grow: 1; display: flex; flex-direction: column; }
+.lancha-tag { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+.lancha-corpo h3 { font-size: 1.5rem; margin-bottom: 15px; }
+.lancha-corpo p { font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 20px; font-weight: 300; }
+
+.ficha-tecnica { list-style: none; margin-bottom: 30px; }
+.ficha-tecnica li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.ficha-tecnica li::before { content: "✦"; color: var(--accent); font-size: 0.7rem; }
+.btn-reserva-lancha { text-align: center; display: block; background-color: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 12px; font-weight: 600; border-radius: 4px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; transition: all 0.3s; margin-top: auto; }
+.btn-reserva-lancha:hover { background-color: var(--accent); color: var(--bg-dark); }
+
+/* ==========================================================================
+   SERVIÇOS OPCIONAIS (CONCIERGE)
+   ========================================================================== */
+.servicos-opcionais { padding: 80px 5%; max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+.servicos-opcionais h2 { text-align: center; font-size: 1.8rem; margin-bottom: 10px; text-transform: uppercase; }
+.servicos-opcionais .subtitle { text-align: center; color: var(--text-muted); margin-bottom: 50px; font-weight: 300; }
+.grid-servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.card-servico { background: linear-gradient(135deg, #111c35 0%, #0f1a30 100%); padding: 30px; border-radius: 6px; border-left: 3px solid var(--accent); }
+.card-servico h3 { font-size: 1.1rem; margin-bottom: 10px; }
+.card-servico p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+
+/* ==========================================================================
+   FORMULÁRIO DE RESERVA PREMIUM (CENTRALIZADO)
+   ========================================================================== */
+.secao-formulario { background-color: #080e1a; padding: 80px 5%; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+.container-form { max-width: 600px; margin: 0 auto; text-align: center; }
+.container-form h2 { font-size: 1.8rem; margin-bottom: 10px; text-transform: uppercase; }
+.container-form p { color: var(--text-muted); margin-bottom: 40px; font-weight: 300; font-size: 0.95rem; }
+.form-premium { text-align: left; }
+.form-group { margin-bottom: 20px; }
+.form-group-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #cbd5e1; margin-bottom: 8px; }
+.form-control { width: 100%; background-color: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.2); padding: 14px; border-radius: 4px; color: #ffffff; font-size: 0.95rem; }
+.form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 8px rgba(212, 175, 55, 0.15); }
+select.form-control option { background-color: var(--bg-dark); }
+.btn-submit { width: 100%; background-color: var(--accent); color: var(--bg-dark); border: none; padding: 16px; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; transition: all 0.3s; margin-top: 10px; }
+.btn-submit:hover { background-color: #f3cf65; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid-frota { grid-template-columns: 1fr; }
+    .form-group-row { grid-template-columns: 1fr; gap: 0; }
+    .hero h1 { font-size: 2rem; }
+}
+
+.footer-premium {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #070e1a;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-premium a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+.footer-premium a:hover {
+    color: #ffffff;
+}
+
+.copyright-premium {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.footer-premium {
+    width: 100%;
+    padding: 30px 0;
+    background-color: #0f1a30; /* Mantém o fundo escuro padrão da página premium */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #ffffff; /* Texto branco para contrastar com o fundo escuro */
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.copyright .footer-link-item {
+    color: #c29d2c; /* Cor dourada para o link de política */
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-decoration 0.3s;
+}
+
+.copyright .footer-link-item:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO FIXA E CORRETA DO BANNER DE PRIVACIDADE (LGPD)
+   ========================================================================== */
+.lgpd-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0f1a30 !important; /* Força o fundo escuro premium */
+    color: #ffffff !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 99999; /* Garante que ele fique acima de qualquer elemento ou footer */
+    padding: 20px 5%;
+    box-sizing: border-box;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    display: block; /* Garante a exibição do bloco */
+}
+
+/* Quando estiver oculto */
+.lgpd-banner.hidden {
+    transform: translateY(100%) !important;
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.lgpd-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.lgpd-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    margin: 0;
+    color: #cbd5e1 !important;
+    flex: 1;
+    min-width: 280px;
+    text-align: left;
+}
+
+.lgpd-content a {
+    color: #c29d2c !important; /* Tom dourado da Sagio */
+    text-decoration: underline !important;
+    font-weight: 600;
+}
+
+.lgpd-content a:hover {
+    color: #ffffff !important;
+}
+
+.btn-lgpd {
+    background-color: #c29d2c !important;
+    color: #0f1a30 !important;
+    border: none !important;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.btn-lgpd:hover {
+    background-color: #e5b834 !important;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .lgpd-content {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 15px;
+    }
+    .lgpd-content p {
+        text-align: center;
+    }
+    .btn-lgpd {
+        width: 100%;
+    }
+}

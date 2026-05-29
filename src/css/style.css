@@ -1,0 +1,687 @@
+/* ==========================================================================
+   RESET & VARIÁVEIS DO PROJETO
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --primary: #0f1a30;     /* Azul Marinho Principal */
+    --accent: #d4af37;      /* Dourado/Amarelo para realces de destaque */
+    --bg-light: #f8fafc;    /* Fundo geral das seções */
+    --text-dark: #1e293b;   /* Cor primária dos textos */
+    --text-light: #64748b;  /* Cor secundária dos textos (mais suave) */
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO (NAVBAR)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex; /* Alinha os itens na horizontal */
+    align-items: center; /* Centraliza verticalmente a logo e o texto */
+    gap: 15px; /* Define um espaçamento entre a logo e o texto */
+}
+
+/* Ajustes na imagem da logo se necessário */
+.logo-container img {
+    height: 50px; /* Ajuste a altura conforme necessário */
+    width: auto; /* Mantém a proporção */
+}
+
+/* Localize e substitua o bloco .logo que você já tinha */
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte */
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin: 0; /* Remove margens que podem quebrar o alinhamento */
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--primary);
+}
+
+.logo-text span {
+    color: var(--accent);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover, 
+.nav-menu a.active {
+    color: var(--accent);
+}
+
+/* ==========================================================================
+   SEÇÃO HERO (TOPO DO SITE) - ATUALIZADO COM IMAGEM DO DELTA
+   ========================================================================== */
+.hero {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    /* Linha atualizada com imagem aérea conceitual dos canais e dunas do Delta */
+    background: linear-gradient(rgba(15, 26, 48, 0.45), rgba(15, 26, 48, 0.7)), 
+                url(../images/delta.jpg) no-repeat center center/cover;
+    padding: 0 20px;
+}
+
+.hero-content { 
+    max-width: 900px; 
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 35px;
+    color: #e2e8f0;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 15px 35px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* ==========================================================================
+   SEÇÃO DE EXPERIÊNCIAS (CARDS)
+   ========================================================================== */
+.experiences {
+    padding: 100px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.section-header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.grid-experiences {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.card-exp {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-exp:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(15, 26, 48, 0.1);
+}
+
+/* Borda dourada sutil para destacar a opção Premium */
+.card-destaque {
+    border: 1px solid var(--accent);
+}
+
+.card-img {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-body {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body h3 {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.card-body p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 20px;
+}
+
+.btn-card {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.btn-card:hover { 
+    color: var(--accent); 
+}
+
+.btn-card-destaque {
+    color: var(--accent);
+}
+
+/* ==========================================================================
+   SEÇÃO TESTEMUNHOS (AVALIAÇÕES)
+   ========================================================================== */
+.testimonials {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+}
+
+.testimonials-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-review {
+    background-color: #1a2846;
+    padding: 35px;
+    border-radius: 6px;
+    width: calc(33.333% - 20px);
+    min-width: 300px;
+    text-align: left;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.stars { 
+    color: var(--accent); 
+    margin-bottom: 15px; 
+    font-size: 1.1rem; 
+}
+
+.card-review p { 
+    font-weight: 300; 
+    line-height: 1.6; 
+    color: #cbd5e1; 
+    font-style: italic; 
+}
+
+.card-review h4 { 
+    margin-top: 20px; 
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    color: #ffffff; 
+}
+
+/* ==========================================================================
+   RODAPÉ & FORMULÁRIO DE CONTATO
+   ========================================================================== */
+.footer-contact {
+    padding: 80px 5% 40px;
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+}
+
+.contact-info h3 { 
+    font-size: 1.6rem; 
+    color: var(--primary); 
+    margin-bottom: 20px; 
+}
+
+.contact-info p { 
+    color: var(--text-light); 
+    margin-bottom: 30px; 
+    font-weight: 300; 
+    line-height: 1.6; 
+}
+
+.info-link { 
+    display: block; 
+    margin-bottom: 15px; 
+    font-weight: 500; 
+    color: var(--primary); 
+}
+
+.link-wpp {
+    color: #25d366;
+}
+
+.link-insta {
+    color: #e1306c; /* Tom de rosa/gradiente característico do Instagram */
+    transition: opacity 0.3s;
+}
+
+.link-insta:hover {
+    opacity: 0.8;
+}
+
+.endereco {
+    margin-top: 20px; 
+    font-size: 0.9rem;
+}
+
+.footer-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#form-lead input:focus {
+    border-color: #007bff; /* Ou a cor de destaque do seu tema */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+.form-full { 
+    grid-column: span 2; 
+}
+
+.footer-form input, 
+.footer-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background-color: #f8fafc;
+    font-size: 0.95rem;
+}
+
+.footer-form input:focus, 
+.footer-form textarea:focus {
+    outline: none; 
+    border-color: var(--primary);
+}
+
+.btn-submit {
+    grid-column: span 2;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover { 
+    background-color: #1a2d52; 
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVIDADE SMARTPHONE / TABLET)
+   ========================================================================== */
+@media (max-width: 968px) {
+    .navbar { 
+        flex-direction: column; 
+        gap: 20px; 
+    }
+    .hero h1 { 
+        font-size: 2.2rem; 
+    }
+    .footer-grid { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    }
+    .card-review { 
+        width: 100%; 
+    }
+}
+
+/* Estilização para as logos das redes sociais no rodapé */
+.contact-info .info-link {
+    display: flex;
+    align-items: center; /* Alinha verticalmente a imagem com o texto */
+    gap: 10px;           /* Dá um espaço de 10px entre a logo e o texto */
+}
+
+.social-icon {
+    width: 20px;         /* Define uma largura padrão elegante */
+    height: auto;        /* Mantém a proporção da imagem */
+    object-fit: contain;
+}
+
+/* ==========================================================================
+   ESTILOS ADICIONAIS PARA OS DOIS CARDS VCAT E COMPARAÇÃO
+   ========================================================================== */
+.card-destaque-vcat24 {
+    border: 1px solid rgba(194, 157, 44, 0.3);
+    box-shadow: 0 10px 25px rgba(194, 157, 44, 0.05);
+}
+
+.card-tag-vcat {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.card-tag-vcat24 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #c29d2c;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.vcat-quick-info {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0 15px 0;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* Painel de Detalhamento */
+.roteiro-detalhado-container {
+    margin-top: 60px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    scroll-margin-top: 90px;
+}
+
+.roteiro-header { text-align: center; margin-bottom: 35px; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; }
+.roteiro-header h2 { color: var(--primary); font-size: 1.8rem; margin-bottom: 8px; }
+.roteiro-header p { color: var(--text-light); font-size: 0.95rem; }
+.roteiro-grid-conteudo { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; }
+.roteiro-grid-conteudo h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 2px solid var(--accent); display: inline-block; }
+
+.lista-paradas { list-style: none; }
+.lista-paradas li { margin-bottom: 15px; font-size: 0.95rem; line-height: 1.6; display: flex; align-items: flex-start; gap: 12px; }
+.badge-parada { background-color: var(--primary); color: #ffffff; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; min-width: 32px; text-align: center; margin-top: 2px; }
+
+.alert-nao-incluso { background-color: #fff5f5; border-left: 4px solid #f56565; padding: 15px; border-radius: 4px; margin-top: 25px; font-size: 0.9rem; color: #c53030; }
+
+/* Caixas de Especificações Técnicas */
+.box-especificacao-vcat { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 20px; margin-bottom: 15px; }
+.destaque-box { border-left: 4px solid #c29d2c; background-color: #fffdf5; }
+.box-especificacao-vcat h4 { color: var(--primary); font-size: 1.05rem; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+.box-especificacao-vcat h4 span { font-size: 0.85rem; color: var(--text-light); font-weight: 400; }
+
+.lista-comodidades { list-style: none; display: grid; grid-template-columns: 1fr; gap: 6px; }
+.lista-comodidades li { font-size: 0.85rem; color: #475569; display: flex; align-items: center; gap: 8px; }
+.lista-comodidades li::before { content: "✓"; color: #10b981; font-weight: bold; }
+.lista-comodidades li.item-vip::before { content: "✦"; color: #c29d2c; }
+.lista-comodidades li.item-vip { color: #b45309; font-weight: 500; }
+
+.btn-reserva-vcat { display: block; text-align: center; background-color: var(--primary); color: white; padding: 14px; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; border-radius: 4px; transition: background 0.3s; margin-top: 20px; }
+.btn-reserva-vcat:hover { background-color: #1a2d52; }
+
+@media (max-width: 850px) {
+    .roteiro-grid-conteudo { grid-template-columns: 1fr; gap: 30px; }
+}
+
+.footer-premium {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #070e1a;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-premium a {
+    color: var(--accent);
+    font-weight: 600;
+    margin-left: 5px;
+    transition: color 0.3s;
+}
+
+.footer-premium a:hover {
+    color: #ffffff;
+}
+
+.copyright-premium {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.footer-premium {
+    width: 100%;
+    padding: 30px 0;
+    background-color: #0f1a30; /* Mantém o fundo escuro padrão da página premium */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #252424; /* Texto branco para contrastar com o fundo escuro */
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.copyright .footer-link-item {
+    color: #c29d2c; /* Cor dourada para o link de política */
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-decoration 0.3s;
+}
+
+.copyright .footer-link-item:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   ESTILIZAÇÃO FIXA E CORRETA DO BANNER DE PRIVACIDADE (LGPD)
+   ========================================================================== */
+.lgpd-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0f1a30 !important; /* Força o fundo escuro premium */
+    color: #ffffff !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 99999; /* Garante que ele fique acima de qualquer elemento ou footer */
+    padding: 20px 5%;
+    box-sizing: border-box;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    display: block; /* Garante a exibição do bloco */
+}
+
+/* Quando estiver oculto */
+.lgpd-banner.hidden {
+    transform: translateY(100%) !important;
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.lgpd-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.lgpd-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    margin: 0;
+    color: #cbd5e1 !important;
+    flex: 1;
+    min-width: 280px;
+    text-align: left;
+}
+
+.lgpd-content a {
+    color: #c29d2c !important; /* Tom dourado da Sagio */
+    text-decoration: underline !important;
+    font-weight: 600;
+}
+
+.lgpd-content a:hover {
+    color: #ffffff !important;
+}
+
+.btn-lgpd {
+    background-color: #c29d2c !important;
+    color: #0f1a30 !important;
+    border: none !important;
+    padding: 12px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.btn-lgpd:hover {
+    background-color: #e5b834 !important;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .lgpd-content {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 15px;
+    }
+    .lgpd-content p {
+        text-align: center;
+    }
+    .btn-lgpd {
+        width: 100%;
+    }
+}
