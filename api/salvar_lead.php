@@ -1,14 +1,28 @@
 <?php
-// Habilita a exibição de erros para o nosso teste local
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+// 1. CONFIGURAÇÃO DE SEGURANÇA: NUNCA exibir erros na tela para não quebrar o JSON
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
 
-// Define o cabeçalho para retorno em formato JSON
+// 2. FORÇA O CABEÇALHO JSON
 header('Content-Type: application/json; charset=utf-8');
 
+// 3. CAPTURA DE ERROS FATAIS (BLINDAGEM)
+register_shutdown_function(function() {
+    $error = error_get_last();
+    if ($error !== null && ($error['type'] === E_ERROR || $error['type'] === E_PARSE)) {
+        http_response_code(500);
+        echo json_encode([
+            'status' => 'erro',
+            'mensagem' => 'Erro fatal no servidor',
+            'erro_detalhado' => $error['message']
+        ]);
+        exit;
+    }
+});
+
 // Importa a conexão com o PostgreSQL
-require_once __DIR__ . '/config/conexao_postgres.php';
+require_once __DIR__ . '/../config/conexao_postgres.php';
 
 // Simula o recebimento de dados via POST (ou pega do formulário real)
 // Para testar direto no navegador, se não houver dados via POST, usamos dados de teste
