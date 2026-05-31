@@ -39,10 +39,11 @@ function inicializarFormulario() {
         formData.append('lgpd_consentimento', consentimentoLGPD);
 
         // 3. Dispara a requisição AJAX para a nossa API do Postgres
-        fetch('../api/salvar_lead.php', { 
-            method: 'POST',
-            body: formData
-        })
+        .catch(error => {
+        console.error("Erro detalhado:", error);
+            // Em vez de um alert genérico, vamos logar no console para ver o que é
+            alert("O servidor respondeu com um erro. Verifique o console (F12) para detalhes.");
+        });
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro na resposta do servidor');

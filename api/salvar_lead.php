@@ -1,101 +1,64 @@
 <?php
-// 1. CONFIGURAÇÃO DE SEGURANÇA: NUNCA exibir erros na tela para não quebrar o JSON
+// 1. Blindagem contra HTML na tela
 ini_set('display_errors', 0);
-ini_set('display_startup_errors', 0);
-error_reporting(E_ALL);
-
-// 2. FORÇA O CABEÇALHO JSON
+error_reporting(0);
 header('Content-Type: application/json; charset=utf-8');
 
-// 3. CAPTURA DE ERROS FATAIS (BLINDAGEM)
+// 2. Proteção contra erros fatais do servidor
 register_shutdown_function(function() {
     $error = error_get_last();
-    if ($error !== null && ($error['type'] === E_ERROR || $error['type'] === E_PARSE)) {
+    if ($error !== null && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
         http_response_code(500);
-        echo json_encode([
-            'status' => 'erro',
-            'mensagem' => 'Erro fatal no servidor',
-            'erro_detalhado' => $error['message']
-        ]);
+        echo json_encode(['status' => 'erro', 'mensagem' => 'Falha interna: ' . $error['message']]);
         exit;
     }
 });
 
-// Importa a conexão com o PostgreSQL
-require_once __DIR__ . '/../config/conexao_postgres.php';
-
-// Simula o recebimento de dados via POST (ou pega do formulário real)
-// Para testar direto no navegador, se não houver dados via POST, usamos dados de teste
-$nome       = $_POST['nome'] ?? 'Cliente Teste Postgres';
-$email      = $_POST['email'] ?? 'teste_pg_' . time() . '@sagio.com.br';
-$telefone   = $_POST['telefone'] ?? '(86) 99999-9999';
-$lgpd       = $_POST['lgpd_consentimento'] ?? 'accepted';
-
 try {
-    // 1. Inicia o cronômetro de alta precisão
-    $tempo_inicio = microtime(true);
+    // 3. Conecta ao Banco
+    $caminho_conexao = __DIR__ . '/../config/conexao_postgres.php';
+    if (!file_exists($caminho_conexao)) {
+        throw new Exception("Arquivo de configuração do banco não encontrado.");
+    }
+    require_once $caminho_conexao;
 
-    // 2. Prepara a transação para garantir integridade (Boa prática de Engenharia)
-    $pdo_postgres->beginTransaction();
-
-    // 3. Query 1: Inserir na tabela de Leads (Com os campos de consentimento da LGPD)
-    $sql_lead = "INSERT INTO usuarios_leads (nome, email, telefone, lgpd_consentimento) 
-                 VALUES (:nome, :email, :telefone, :lgpd) RETURNING id";
-    
-    $stmt_lead = $pdo_postgres->prepare($sql_lead);
-    $stmt_lead->execute([
-        ':nome'     => $nome,
-        ':email'    => $email,
-        ':telefone' => $telefone,
-        ':lgpd'     => $lgpd
-    ]);
-    
-    // Recupera o ID gerado pelo PostgreSQL usando o RETURNING id
-    $id_lead = $stmt_lead->fetchColumn();
-
-    // 4. Query 2: Inserir a solicitação de passeio vinculada a esse Lead
-    $sql_passeio = "INSERT INTO solicitacoes_passeios (id_lead, tipo_passeio, data_passeio, quantidade_pessoas) 
-                    VALUES (:id_lead, :tipo_passeio, :data_passeio, :quantidade_pessoas)";
-    
-    $stmt_passeio = $pdo_postgres->prepare($sql_passeio);
-    $stmt_passeio->execute([
-        ':id_lead'            => $id_lead,
-        ':tipo_passeio'       => 'Passeio Tradicional Delta',
-        ':data_passeio'       => date('Y-m-d', strtotime('+7 days')), // Próxima semana
-        ':quantidade_pessoas' => 2
-    ]);
-
-    // Confirma as inserções no banco
-    $pdo_postgres->commit();
-
-    // 5. Para o cronômetro e calcula a diferença
-    $tempo_fim = microtime(true);
-    $tempo_execucao = ($tempo_fim - $tempo_inicio) * 1000; // Converte para milissegundos
-
-    // Retorna a resposta de sucesso e a métrica de desempenho
-    echo json_encode([
-        'status' => 'sucesso',
-        'banco' => 'PostgreSQL',
-        'mensagem' => 'Lead e pedido salvos com total conformidade à LGPD!',
-        'id_gerado' => $id_lead,
-        'performance' => [
-            'tempo_ms' => round($tempo_execucao, 4) . ' ms',
-            'timestamp' => date('Y-m-d H:i:s')
-        ]
-    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-
-} catch (Exception $e) {
-    // Se algo der errado, desfaz tudo para não sujar o banco
-    if ($pdo_postgres->inTransaction()) {
-        $pdo_postgres->rollBack();
+    if (!isset($pdo_postgres)) {
+        throw new Exception("A conexão com o banco não pôde ser estabelecida.");
     }
 
-    // Retorna o erro em formato JSON
+    // 4. Recebe os dados do formulário
+    $nome     = $_POST['nome'] ?? '';
+    $email    = $_POST['email'] ?? '';
+    $telefone = $_POST['telefone'] ?? '';
+    $lgpd     = $_POST['lgpd_consentimento'] ?? 'accepted';
+
+    if (empty($nome) || empty($email)) {
+        throw new Exception("Nome e e-mail são obrigatórios.");
+    }
+
+    // 5. Inicia a transação e salva no banco
+    $pdo_postgres->beginTransaction();
+
+    $sql_lead = "INSERT INTO usuarios_leads (nome, email, telefone, lgpd_consentimento) VALUES (:nome, :email, :telefone, :lgpd) RETURNING id";
+    $stmt_lead = $pdo_postgres->prepare($sql_lead);
+    $stmt_lead->execute([':nome' => $nome, ':email' => $email, ':telefone' => $telefone, ':lgpd' => $lgpd]);
+    
+    $id_lead = $stmt_lead->fetchColumn();
+
+    $sql_passeio = "INSERT INTO solicitacoes_passeios (id_lead, tipo_passeio, data_passeio, quantidade_pessoas) VALUES (:id_lead, 'Passeio Tradicional Delta', CURRENT_DATE, 2)";
+    $stmt_passeio = $pdo_postgres->prepare($sql_passeio);
+    $stmt_passeio->execute([':id_lead' => $id_lead]);
+
+    $pdo_postgres->commit();
+
+    // 6. Resposta de Sucesso
+    echo json_encode(['status' => 'sucesso', 'mensagem' => 'Lead salvo com sucesso na nuvem!']);
+
+} catch (Throwable $e) { // Captura qualquer tipo de erro (PDOException, Exception, Error)
+    if (isset($pdo_postgres) && $pdo_postgres->inTransaction()) {
+        $pdo_postgres->rollBack();
+    }
     http_response_code(500);
-    echo json_encode([
-        'status' => 'erro',
-        'banco' => 'PostgreSQL',
-        'mensagem' => 'Falha ao processar a requisição.',
-        'erro_detalhado' => $e->getMessage()
-    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    echo json_encode(['status' => 'erro', 'mensagem' => $e->getMessage()]);
 }
+?>
