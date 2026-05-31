@@ -158,6 +158,20 @@ a {
     margin: 0 auto;
 }
 
+.grid-experiences {
+    display: grid;
+    /* Isso faz eles ficarem lado a lado e quebrarem linha apenas se não couberem */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.card-exp {
+    /* Remova qualquer "width: 100%" daqui se existir */
+    display: flex;
+    flex-direction: column;
+    /* O width será gerenciado pelo grid */
+}
+
 .section-header {
     text-align: center;
     margin-bottom: 60px;
