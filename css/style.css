@@ -434,23 +434,29 @@ a {
     gap: 20px;
 }
 
-/* Garante que elementos como o checkbox ocupem as duas colunas */
-.form-full {
-    grid-column: span 2;
-}
-
 /* Estilo para o checkbox ficar alinhado ao texto */
 .checkbox-container {
-    grid-column: span 2; /* Faz o checkbox ocupar a largura total */
     display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.85rem;
-    color: var(--text-light);
+    align-items: center;    /* Alinha verticalmente no centro */
+    justify-content: flex-start;
+    gap: 10px;              /* Espaçamento pequeno entre o box e o texto */
+    grid-column: span 2;    /* Faz ocupar a largura total do formulário */
+    margin: 10px 0;
 }
 
-.checkbox-container input {
-    width: auto; /* Evita que o checkbox fique gigante */
+.checkbox-container label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.2;
+    cursor: pointer;
+    white-space: nowrap;    /* Impede a quebra de linha forçada */
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin: 0;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;         /* Impede que o checkbox fique pequeno em telas menores */
 }
 
 /* Garante que o botão também ocupe as duas colunas */
