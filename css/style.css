@@ -165,6 +165,14 @@ a {
     gap: 40px;
 }
 
+/* Isso faz com que as caixas dentro do grid se comportem como cards */
+.grid-experiences .box-especificacao-vcat {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0; /* Remove a margem extra para alinhar com o grid */
+    height: 100%;     /* Faz as duas colunas terem a mesma altura */
+}
+
 .card-exp {
     /* Remova qualquer "width: 100%" daqui se existir */
     display: flex;
