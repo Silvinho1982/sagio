@@ -391,10 +391,34 @@ a {
     font-size: 0.9rem;
 }
 
+/* Organiza o grid do formulário */
 .footer-form form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
     gap: 20px;
+}
+
+/* Garante que elementos como o checkbox ocupem as duas colunas */
+.form-full {
+    grid-column: span 2;
+}
+
+/* Estilo para o checkbox ficar alinhado ao texto */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.checkbox-container input {
+    width: auto; /* Evita que o checkbox fique gigante */
+}
+
+/* Garante que o botão também ocupe as duas colunas */
+.btn-submit {
+    grid-column: span 2;
 }
 
 #form-lead input:focus {

@@ -224,13 +224,15 @@
                     <input type="text" name="nome" placeholder="Seu nome completo" required>
                     <input type="email" name="email" placeholder="Seu e-mail" required>
                     <input type="tel" name="telefone" placeholder="(86) 99999-9999" required>
-                    
-                    <label style="font-size: 0.8rem; color: #fff; display: block; margin-bottom: 10px;">
-                        <input type="checkbox" name="lgpd_consentimento" value="accepted" required>
-                        Concordo com a coleta dos meus dados para contato.
-                    </label>
-                    
-                    <button type="submit">Garantir Vaga</button>
+
+                    <div class="form-full checkbox-container">
+                        <input type="checkbox" id="aceite" name="aceite" required>
+                        <label for="aceite">
+                            Li e aceito a <a href="/politica-privacidade">Política de Privacidade</a> e LGPD.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Garantir Vaga</button>
                 </form>
             </div>
         </div>     
