@@ -442,7 +442,7 @@ a {
 }
 
 .footer-form input:focus,
-.footer-form textarea:focus {
+.sfooter-form textarea:focus {
     outline: none;
     border-color: var(--primary);
 }
@@ -469,7 +469,7 @@ a {
     text-align: center;
     margin-top: 60px;
     padding-top: 20px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #292b2d;
     font-size: 0.85rem;
     color: var(--text-light);
 }
