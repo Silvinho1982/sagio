@@ -95,6 +95,42 @@ a {
     color: var(--accent);
 }
 
+/* Esconde o botão hambúrguer em telas grandes */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--primary);
+}
+
+/* Responsividade para telas menores (ex: abaixo de 768px) */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Mostra o hambúrguer */
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 80px;
+        left: -100%; /* Esconde o menu fora da tela */
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        left: 0; /* Traz o menu para a tela */
+    }
+}
 /* ==========================================================================
    SEÇÃO HERO (TOPO DO SITE)
    ========================================================================== */

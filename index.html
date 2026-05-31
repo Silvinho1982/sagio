@@ -21,6 +21,13 @@
             <img src="images/logo_Sagio2.png" alt="Sagio Turismo" class="navbar-logo">
             <div class="logo-text">SAGIO<span>TURISMO</span></div>
         </div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
         <ul class="nav-menu">
             <li><a href="#" class="active">Início</a></li>
             <li><a href="passeios.html">Passeios</a></li>
@@ -252,6 +259,15 @@
 
     <script src="js/lgpd.js" defer></script>
     <script src="js/script.js" defer></script>
+
+    <script>
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('.nav-menu');
+
+        menu.addEventListener('click', function() {
+            menuLinks.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
