@@ -391,10 +391,10 @@ a {
     font-size: 0.9rem;
 }
 
-/* Organiza o grid do formulário */
+/* Organiza o grid para o checkbox não ficar solto */
 .footer-form form {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
@@ -405,10 +405,11 @@ a {
 
 /* Estilo para o checkbox ficar alinhado ao texto */
 .checkbox-container {
+    grid-column: span 2; /* Faz o checkbox ocupar a largura total */
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-light);
 }
 
@@ -467,11 +468,11 @@ a {
 
 .copyright {
     text-align: center;
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid #292b2d;
     font-size: 0.85rem;
-    color: var(--text-light);
+    color: #475569; /* Cinza escuro para garantir leitura em fundo branco */
+    line-height: 1.6;
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
 
 /* ==========================================================================
@@ -718,11 +719,10 @@ a {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Garante que o link de Política de Cancelamento também seja visível */
 .footer-premium a {
-    color: var(--accent);
+    color: var(--primary); /* Ou a cor que preferir, desde que contraste */
     font-weight: 600;
-    margin-left: 5px;
-    transition: color 0.3s;
 }
 
 .footer-premium a:hover {
@@ -732,7 +732,7 @@ a {
 .copyright {
     text-align: center;
     font-size: 0.85rem;
-    color: #ffffff;
+    color: #2d2828;
     opacity: 0.8;
     line-height: 1.6;
     margin-top: 15px;
